@@ -1,0 +1,84 @@
+.section__h3 {
+    text-align: center;
+    padding-bottom: 20px;
+    margin: 0 auto 20px;
+}
+
+.section__fieldset {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border: 2px solid rgb(31, 119, 31);
+    border-radius: 10px;
+    padding-left: 40px;
+    padding-top: 15px;
+    background-image: url(../img/money.jpg);
+    background-size: cover;
+    background-blend-mode: soft-light;
+    background-color: rgba(235, 235, 235, 0.849);
+    box-shadow: 5px 5px 10px -6px #5B5B5B;
+}
+
+.section__legend {
+    padding: 5px 10px;
+    background-color: rgb(31, 119, 31);
+    color: white;
+    border-radius: 10px 10px;
+    text-align: center;
+    box-shadow: 5px 5px 10px -6px #5B5B5B;
+}
+
+.section__label {
+    width: 100%;
+    max-width: 140px;
+    display: inline-block;
+    margin-right: 5px;
+    font-weight: 700;
+}
+
+.section__button {
+    padding: 10px 20px;
+    background-color: rgb(31, 119, 31);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 5px 5px 10px -6px #5B5B5B;
+    border: none;
+    margin-bottom: 5px;
+}
+
+.section__button:hover {
+    background-color: rgb(172, 15, 46);
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.section__button:active {
+    background-color: rgb(230, 187, 0)
+}
+
+.section__select {
+    border: 1px solid #ccc;
+    width: 70px;
+    height: 34px;
+    background-color: white;
+    margin-left: 5px;
+}
+
+.section__inputBox{
+    display: inline-block;
+}
+
+.section__input {
+    width: 130px;
+    padding: 7px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.section__message {
+    color: rgb(31, 119, 31);
+    margin-left: 15px;
+    padding: 10px;
+    font-size: 18px;
+}

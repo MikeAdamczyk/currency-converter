@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Currency Converter</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link href="css/global.css" rel="stylesheet">
+    <link href="css/container.css" rel="stylesheet">
+    <link href="css/header.css" rel="stylesheet">
+    <link href="css/section.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
+
+    <script defer src="js/script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <header class="header">
+            <h1>Kalkulator walut</h1>
+        </header>
+
+        <main>
+
+            <section class="section">
+                <h3 class="section__h3">🔒Bezpieczna wymiana przez internet!</h3>
+                <form class="section__form">
+
+                    <fieldset class="section__fieldset">
+
+                        <legend class="section__legend">
+                            Wymiana waluty
+                        </legend>
+
+                        <p>
+                            <label>
+                                <span class="section__label">Chcę wymienić:</span>
+                                <span class="section__inputBox">
+                                    <input class="section__input js-amountToExchange" type="number"
+                                        name="amountToExchange" step="0.01" required placeholder="Wpisz kwotę">
+                                    <select class="section__select js-currencyToExchange">
+                                        <option selected>PLN</option>
+                                        <option>USD</option>
+                                        <option>EUR</option>
+                                        <option>CHF</option>
+                                    </select>
+                                </span>
+                            </label>
+
+                        </p>
+
+                        <p>
+                            <label>
+                                <span class="section__label">Otrzymam:</span>
+                                <span class="section__inputBox">
+                                    <input class="section__input js-exchangedAmount" type="number"
+                                        name="exchangedAmount" readonly>
+                                    <select class="section__select js-exchangedCurrency">
+                                        <option>PLN</option>
+                                        <option selected>USD</option>
+                                        <option>EUR</option>
+                                        <option>CHF</option>
+                                    </select>
+                                </span>
+                            </label>
+
+                        </p>
+
+                        <p>
+                            <button class="section__button">Kupuję!</button> <span
+                                class="section__message js-message"></span>
+                        </p>
+
+                    </fieldset>
+
+
+                </form>
+
+            </section>
+
+        </main>
+
+        <footer class="footer">
+            © Copyright by Michał Adamczyk 2020. Wszelkie prawa zastrzeżone!
+        </footer>
+    </div>
+
+</body>
+
+</html>
