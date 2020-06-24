@@ -74,5 +74,5 @@ form.addEventListener("submit", (event) => {
 
     let exchangeRate = (amountToExchange / exchangedAmount).toFixed(2);
 
-    message.innerHTML = `Gratulacje! Wymieniłeś <strong>${amountToExchange}&nbsp;${currencyToExchange}</strong> na <strong>${exchangedAmount}&nbsp${exchangedCurrency}</strong> po kursie <strong>${exchangeRate}</strong>!`;
+    message.innerHTML = `Gratulacje! Wymieniłeś <strong>${amountToExchange}&nbsp;${currencyToExchange}</strong> na <strong>${exchangedAmount}&nbsp;${exchangedCurrency}</strong> po kursie <strong>${exchangeRate}</strong>!`;
 });
