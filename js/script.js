@@ -1,78 +1,97 @@
-let form = document.querySelector(".section__form");
-let amountToExchangeElement = document.querySelector(".js-amountToExchange");
-let currencyToExchangeElement = document.querySelector(".js-currencyToExchange");
-let exchangedAmountElement = document.querySelector(".js-exchangedAmount");
-let exchangedCurrencyElement = document.querySelector(".js-exchangedCurrency");
-let message = document.querySelector(".js-message");
+{
+    const amountToExchangeElement = document.querySelector(".js-amountToExchange");
+    const currencyToExchangeElement = document.querySelector(".js-currencyToExchange");
+    const exchangedAmountElement = document.querySelector(".js-exchangedAmount");
+    const exchangedCurrencyElement = document.querySelector(".js-exchangedCurrency");
 
-function exchange(event) {
-    event.preventDefault();
 
-    let amountToExchange = amountToExchangeElement.value;
-    let currencyToExchange = currencyToExchangeElement.value;
-    let exchangedCurrency = exchangedCurrencyElement.value;
-    let exchangeResult;
+    const exchange = event => {
 
-    let plnValue;
-    let usdRate = 3.94;
-    let eurRate = 4.45;
-    let chfRate = 4.15;
+        event.preventDefault();
 
-    switch (currencyToExchange) {
-        case "PLN":
-            plnValue = +amountToExchange;
-            break;
+        const amountToExchange = amountToExchangeElement.value;
+        const currencyToExchange = currencyToExchangeElement.value;
+        const exchangedCurrency = exchangedCurrencyElement.value;
+        let exchangeResult;
 
-        case "USD":
-            plnValue = amountToExchange * usdRate;
-            break;
+        let plnValue;
+        const usdRate = 3.94;
+        const eurRate = 4.45;
+        const chfRate = 4.15;
 
-        case "EUR":
-            plnValue = amountToExchange * eurRate;
-            break;
+        switch (currencyToExchange) {
+            case "PLN":
+                plnValue = +amountToExchange;
+                break;
 
-        case "CHF":
-            plnValue = amountToExchange * chfRate;
-            break;
+            case "USD":
+                plnValue = amountToExchange * usdRate;
+                break;
+
+            case "EUR":
+                plnValue = amountToExchange * eurRate;
+                break;
+
+            case "CHF":
+                plnValue = amountToExchange * chfRate;
+                break;
+        }
+
+        switch (exchangedCurrency) {
+            case "PLN":
+                exchangeResult = plnValue;
+                break;
+
+            case "USD":
+                exchangeResult = plnValue / usdRate;
+                break;
+
+            case "EUR":
+                exchangeResult = plnValue / eurRate;
+                break;
+
+            case "CHF":
+                exchangeResult = plnValue / chfRate;
+                break;
+        }
+
+        exchangedAmountElement.value = exchangeResult.toFixed(2);
     }
 
-    switch (exchangedCurrency) {
-        case "PLN":
-            exchangeResult = plnValue;
-            break;
 
-        case "USD":
-            exchangeResult = plnValue / usdRate;
-            exchangeRate = usdRate;
-            break;
+    const calculationResultMessage = (amountToExchange, currencyToExchange, exchangedAmount, exchangedCurrency, exchangeRate) => {
 
-        case "EUR":
-            exchangeResult = plnValue / eurRate;
-            exchangeRate = eurRate;
-            break;
+        const message = document.querySelector(".js-message");
 
-        case "CHF":
-            exchangeResult = plnValue / chfRate;
-            exchangeRate = chfRate;
-            break;
+        message.innerHTML = `Gratulacje! Wymieniłeś <strong>${amountToExchange}&nbsp;${currencyToExchange}</strong> na <strong>${exchangedAmount}&nbsp;${exchangedCurrency}</strong> po kursie <strong>${exchangeRate}</strong>!`;
     }
 
-    exchangedAmountElement.value = exchangeResult.toFixed(2);
+
+    const onSubmit = (event) => {
+
+        event.preventDefault();
+
+        const amountToExchange = amountToExchangeElement.value;
+        const currencyToExchange = currencyToExchangeElement.value;
+        const exchangedAmount = exchangedAmountElement.value;
+        const exchangedCurrency = exchangedCurrencyElement.value;
+
+        const exchangeRate = (amountToExchange / exchangedAmount).toFixed(2);
+
+        calculationResultMessage(amountToExchange, currencyToExchange, exchangedAmount, exchangedCurrency, exchangeRate);
+    }
+
+
+    const init = () => {
+
+        const form = document.querySelector(".section__form");
+
+        form.addEventListener("submit", onSubmit);
+
+        amountToExchangeElement.addEventListener("input", exchange);
+        currencyToExchangeElement.addEventListener("change", exchange);
+        exchangedCurrencyElement.addEventListener("change", exchange);
+    }
+
+    init();
 }
-
-amountToExchangeElement.addEventListener("input", exchange);
-currencyToExchangeElement.addEventListener("change", exchange);
-exchangedCurrencyElement.addEventListener("change", exchange);
-
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    let amountToExchange = amountToExchangeElement.value;
-    let currencyToExchange = currencyToExchangeElement.value;
-    let exchangedCurrency = exchangedCurrencyElement.value;
-    let exchangedAmount = exchangedAmountElement.value;
-
-    let exchangeRate = (amountToExchange / exchangedAmount).toFixed(2);
-
-    message.innerHTML = `Gratulacje! Wymieniłeś <strong>${amountToExchange}&nbsp;${currencyToExchange}</strong> na <strong>${exchangedAmount}&nbsp;${exchangedCurrency}</strong> po kursie <strong>${exchangeRate}</strong>!`;
-});
