@@ -5,14 +5,11 @@
     const exchangedCurrencyElement = document.querySelector(".js-exchangedCurrency");
 
 
-    const exchange = event => {
-
-        event.preventDefault();
+    const calculateExchangeValue = () => {
 
         const amountToExchange = amountToExchangeElement.value;
         const currencyToExchange = currencyToExchangeElement.value;
         const exchangedCurrency = exchangedCurrencyElement.value;
-        let exchangeResult;
 
         let plnValue;
         const usdRate = 3.94;
@@ -39,25 +36,23 @@
 
         switch (exchangedCurrency) {
             case "PLN":
-                exchangeResult = plnValue;
-                break;
+                return plnValue;
 
             case "USD":
-                exchangeResult = plnValue / usdRate;
-                break;
+                return plnValue / usdRate;
 
             case "EUR":
-                exchangeResult = plnValue / eurRate;
-                break;
+                return plnValue / eurRate;
 
             case "CHF":
-                exchangeResult = plnValue / chfRate;
-                break;
+                return plnValue / chfRate;
         }
-
-        exchangedAmountElement.value = exchangeResult.toFixed(2);
     }
 
+
+    const updateExchangedAmountValue = () => {
+        exchangedAmountElement.value = calculateExchangeValue().toFixed(2);
+    }
 
     const calculationResultMessage = (amountToExchange, currencyToExchange, exchangedAmount, exchangedCurrency, exchangeRate) => {
 
@@ -75,7 +70,6 @@
         const currencyToExchange = currencyToExchangeElement.value;
         const exchangedAmount = exchangedAmountElement.value;
         const exchangedCurrency = exchangedCurrencyElement.value;
-
         const exchangeRate = (amountToExchange / exchangedAmount).toFixed(2);
 
         calculationResultMessage(amountToExchange, currencyToExchange, exchangedAmount, exchangedCurrency, exchangeRate);
@@ -87,10 +81,9 @@
         const form = document.querySelector(".section__form");
 
         form.addEventListener("submit", onSubmit);
-
-        amountToExchangeElement.addEventListener("input", exchange);
-        currencyToExchangeElement.addEventListener("change", exchange);
-        exchangedCurrencyElement.addEventListener("change", exchange);
+        amountToExchangeElement.addEventListener("input", updateExchangedAmountValue);
+        currencyToExchangeElement.addEventListener("change", updateExchangedAmountValue);
+        exchangedCurrencyElement.addEventListener("change", updateExchangedAmountValue);
     }
 
     init();
